@@ -1,41 +1,28 @@
 import React, { Component } from 'react'
-import Perso from "./composants/Perso"
+import DisplayTime from './composants/DisplayTime'
 export default class App extends Component {
-    state = {
-        perso1 : {
-            prenom: "Jean",
-            nom: "Deborsu",
-            age: 15
-        },
-        perso2 : {
-            prenom: "Kevin",
-            nom: "Bakayako",
-            age: 28
-        },
-        perso3: {
-            prenom: "Ilias",
-            nom: "Cambiasso",
-            age: 24
-        }
-    }
-    changer() {
-        // eslint-disable-next-line no-lone-blocks
-        this.setState(() => {
-            return {
-                perso1: {
-                    prenom: "Vincenze",
-                    nom: "Dragoon",
-                    age: 27
-                }
-            }
+  
+    state = { tableau: ["ayay", "oyoy", "ayayez", "agraaa", "agroouax"] }
+    removeEl() {
+   
+        this.state.tableau.splice(0, 1)
+        this.setState((state) => {
+           
+            console.log(state.tableau)
+            return { tableau:  state.tableau }
+            
         })
     }
     render() {
         return (
-            <div>
-                <Perso status={this.state} clicker={() => this.changer()}></Perso>
-            </div>
+            <React.Fragment>
+            <DisplayTime format = "jsTime"></DisplayTime>
+            <div>{this.state.tableau.length}</div>
+            <button onClick = {() => this.removeEl()}> Grara </button>
+            </React.Fragment>
         )
+            
+        
     }
 }
 
